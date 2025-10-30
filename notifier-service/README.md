@@ -1,0 +1,1 @@
+# notifier-service\n\nStart with `npm install` then `npm run start` (which uses ts-node in this scaffold).
