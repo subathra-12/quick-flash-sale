@@ -46,8 +46,7 @@ app.post('/orders', async (req, res) => {
 
     // Insert new order
     const [orderResult] = await conn.query(
-      'INSERT INTO orders (userId, productId, quantity, status, idempotencyKey, createdAt) VALUES (?, ?, ?, ?, ?, NOW())',
-      [userId, productId, quantity, 'PENDING', idempotencyKey]
+      'INSERT INTO orders (userId, productId, quantity, status, idempotencyKey, createdAt) VALUES (userId, productId, quantity, 'PENDING', idempotencyKey]
     );
     const orderId = orderResult.insertId;
 

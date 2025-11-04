@@ -20,8 +20,8 @@ app.post('/login', async (req, res) => {
   const repo = AppDataSource.getRepository(User);
   const user = await repo.findOneBy({ email });
   if (!user) return res.status(401).json({ error: 'invalid' });
-  const access = jwt.sign({ userId: user.id }, process.env.JWT_SECRET || 'secret', { expiresIn: '15m' });
-  const refresh = jwt.sign({ userId: user.id }, process.env.JWT_REFRESH_SECRET || 'refresh-secret', { expiresIn: '7d' });
+  const access = jwt.sign({ userId: user.id }, process.env.JWT_SECRET , { expiresIn: '15m' });
+  const refresh = jwt.sign({ userId: user.id }, process.env.JWT_REFRESH_SECRET , { expiresIn: '1d' });
   res.json({ accessToken: access, refreshToken: refresh });
 });
 
